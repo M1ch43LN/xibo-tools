@@ -1,6 +1,6 @@
 <?php
 //
-// daxchart.php - Tageschart wird geladen und ein bißchen zurechtgeschnitten.
+// daxchart.php - Tageschart wird geladen und ein biÃŸchen zurechtgeschnitten.
 //
 
 $symbol = "^GDAXI";
