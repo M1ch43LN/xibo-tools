@@ -1,6 +1,6 @@
 <?php 	
 	header('content-type: text/html; charset=utf-8');
-	header('refresh: 120;URL="wetter2.php"'); 
+	header('refresh: 120;URL="wetter.php"'); 
 
 	$ort_id = "704283"; //ID finden: http://de.wetter.yahoo.com/
 	$icon_url = "http://l.yimg.com/us.yimg.com/i/us/nws/weather/gr/";
