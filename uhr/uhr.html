@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Time</title>
+<script type="text/javascript">
+<!--
+function start() {
+	time();
+	window.setInterval("time()", 1000);
+}
+
+function time() {
+	var now = new Date();
+	var hours = now.getHours();
+	var minutes = now.getMinutes();
+
+	var thetime = (hours < 10) ? "0" + hours + ":" : hours + ":";
+	thetime += (minutes < 10) ? "0" + minutes : minutes ;
+
+	var element = document.getElementById("time");
+	element.innerHTML = thetime;
+}
+
+//-->
+</script>
+</head>
+<body onload="start();" leftmargin="0" topmargin="0" marginwidth="0" margintop="0" style="margin: 0px; padding:0px; color: #000; font-size: 64pt; font-weight: bold; font-family: Trebuchet MS, Verdana, Arial; text-align: center;">
+<span id="time"></span>
+</body>
+</html>
+
