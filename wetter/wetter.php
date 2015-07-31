@@ -3,7 +3,7 @@
 	header('refresh: 120;URL="wetter.php"'); 
 
 	$ort_id = "704283"; //ID finden: http://de.wetter.yahoo.com/
-	$icon_url = "http://l.yimg.com/us.yimg.com/i/us/nws/weather/gr/";
+	$icon_url = "//l.yimg.com/us.yimg.com/i/us/nws/weather/gr/";
 
 	$wetter = wetterdaten($ort_id, $icon_url);
 ?>
@@ -15,7 +15,7 @@
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet" type="text/css">
+	<link href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet" type="text/css">
 	<style type="text/css">
 		* {
 			padding: 0;
