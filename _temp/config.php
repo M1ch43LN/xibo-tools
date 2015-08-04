@@ -1,0 +1,20 @@
+<?php
+
+// *** Konfiguration ***
+
+$CONSUMER_KEY = "zJ0AHD1ryoLDQd8PtU8qOiNM5";
+$CONSUMER_SECRET = "sawh4MFtzc3hUTY7TapR31AZLDSNhqz6JA5JBtyyZA9d8n8DRz";
+$ACCESS_TOKEN = "142996027-JJXL9Nn01DhY1UU0U1sCt0RoJTSoOVasoCW3pyRy";
+$ACCESS_SECRET = "wZ1noC469lmEoFvAA3uPMADDKCZRYcyjW5katlnW0Sh7P";
+
+$TWITTERACCOUNT = "UnispitalBasel";
+$MAXTWEETS = 20;
+$STARTTWEET = 10;
+$SEKUNDEN = 15;
+$DATUMSFORMAT = "j. F Y \&\m\i\d\d\o\\t\; G:i";
+
+$HASHTAGCOLOR = "#FF0000";
+
+// *********************
+
+?>
