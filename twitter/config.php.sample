@@ -1,0 +1,20 @@
+<?php
+
+// *** Konfiguration ***
+
+$CONSUMER_KEY = "HierConsumerKeyEintragen";
+$CONSUMER_SECRET = "HierConsumerSecretEintragen";
+$ACCESS_TOKEN = "HierAccessTokenEintragen";
+$ACCESS_SECRET = "HierAccessSecretEintragen";
+
+$TWITTERACCOUNT = "HierTwitterAccountEintragen";
+$MAXTWEETS = 20;
+$STARTTWEET = 0;
+$SEKUNDEN = 15;
+$DATUMSFORMAT = "j. F Y \&\m\i\d\d\o\\t\; G:i";
+
+$HASHTAGCOLOR = "#FF0000";
+
+// *********************
+
+?>
