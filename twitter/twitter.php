@@ -43,8 +43,8 @@ $iTweets = count($content);
 			font-size: 10pt;
 			background-color: #ffffff;
 		}
-	
-	    #container {
+		
+		#container {
 		  padding: 10px;
 		}
 		
