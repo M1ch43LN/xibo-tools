@@ -60,9 +60,10 @@ $iTweets = count($content);
 		}
 		
 		#link {
-		  width: 64px;
-		  height: 64px;
+		  width: 58px;
+		  height: 58px;
 		  float: right;
+		  margin-top: 5px;
 		  margin-left: 10px;
 		  margin-bottom: 10px;
 		  display: none;
@@ -75,12 +76,12 @@ $iTweets = count($content);
 		}
 	
 		#userinfo #twitter {
-		  width: 48px;
-		  height: 48px;
+		  width: 32px;
+		  height: 32px;
 		  float: right;
 		  margin-left: 10px;
 		  border-radius: 5px;
-		  background: url('https://g.twimg.com/dev/documentation/image/Twitter_logo_blue_32.png') no-repeat center center;
+		  background: url('https://g.twimg.com/dev/documentation/image/Twitter_logo_blue_16.png') no-repeat center center;
 		}
 	
 		#userinfo #userimage,
@@ -112,6 +113,7 @@ $iTweets = count($content);
 			font-weight: 300;
 			color: #808080;
 			font-size: 0.9em;
+			display: inline;
 		}
 		
 		#userinfo #retweet {
@@ -124,8 +126,9 @@ $iTweets = count($content);
 		}
 		
 		#tweettime {
-			margin-top: 5px;
+			margin-top: 10px;
 			margin-bottom: 5px;
+			display: block;
 		}
 		
 		#tweet {
@@ -150,7 +153,6 @@ $iTweets = count($content);
 			border-radius: 5px;
 			padding: 10px;
 			margin-top: 20px;
-			margin-left: 58px;
 		}
 		
 		#quote {
