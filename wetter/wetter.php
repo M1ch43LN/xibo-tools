@@ -1,9 +1,11 @@
 <?php 	
-	header('content-type: text/html; charset=utf-8');
-	header('refresh: 120;URL="wetter.php"'); 
-
-	$ort_id = "704283"; //ID finden: http://de.wetter.yahoo.com/
+	
+	$ort_id = "GMXX2275"; //ID finden: http://weather.tuxnet24.de/?action=citycode&lang=de
+	$refresh = 120;
 	$icon_url = "//l.yimg.com/us.yimg.com/i/us/nws/weather/gr/";
+
+	header('content-type: text/html; charset=utf-8');
+	header('refresh: ' . $refresh . ';URL="wetter.php"'); 
 
 	$wetter = wetterdaten($ort_id, $icon_url);
 ?>
@@ -136,30 +138,30 @@
 </html>
 
 <?php
+
 function wetterdaten($w,$imgurl) {
-	$xmlurl = "http://weather.yahooapis.com/forecastrss?w=" . $w . "&u=c";
+	$xmlurl = "http://weather.tuxnet24.de/?id=" . $w . "&unit=c&mode=xml";
 	
 	// Daten von API laden und in SimpleXML konvertieren
 	$xml = file_get_contents($xmlurl);
-	$xml = str_replace("yweather:", "yweather_", $xml);
 	$api = simplexml_load_string(utf8_encode($xml));
 	$wetter = array();
 		
 	// Aktuelles Wetter
-	$wetter[0]['zustand'] = yahoo_code2text($api->channel->item->yweather_condition->attributes()->code);
-	$wetter[0]['icon'] = $imgurl . yahoo_code2icon($api->channel->item->yweather_condition->attributes()->code);
-	$wetter[0]['temperatur'] = $api->channel->item->yweather_condition->attributes()->temp;
+	$wetter[0]['zustand'] = yahoo_code2text($api->current_code);
+	$wetter[0]['icon'] = $imgurl . yahoo_code2icon($api->current_code);
+	$wetter[0]['temperatur'] = split(" ",$api->current_temp)[0];
 
 	//Vorhersage für heute und morgen	
-	$wetter[1]['zustand'] = yahoo_code2text($api->channel->item->yweather_forecast[0]->attributes()->code);
-	$wetter[1]['icon'] = $imgurl . yahoo_code2icon($api->channel->item->yweather_forecast[0]->attributes()->code);
-	$wetter[1]['tief'] = $api->channel->item->yweather_forecast[0]->attributes()->low; 
-	$wetter[1]['hoch'] = $api->channel->item->yweather_forecast[0]->attributes()->high;
+	$wetter[1]['zustand'] = yahoo_code2text($api->forecast0_code);
+	$wetter[1]['icon'] = $imgurl . yahoo_code2icon($api->forecast0_code);
+	$wetter[1]['tief'] = split(" ",$api->forecast0_temp_low)[0]; 
+	$wetter[1]['hoch'] = split(" ",$api->forecast0_temp_high)[0];
 
-	$wetter[2]['zustand'] = yahoo_code2text($api->channel->item->yweather_forecast[1]->attributes()->code);
-	$wetter[2]['icon'] = $imgurl . yahoo_code2icon($api->channel->item->yweather_forecast[1]->attributes()->code);
-	$wetter[2]['tief'] = $api->channel->item->yweather_forecast[1]->attributes()->low; 
-	$wetter[2]['hoch'] = $api->channel->item->yweather_forecast[1]->attributes()->high;
+	$wetter[2]['zustand'] = yahoo_code2text($api->forecast1_code);
+	$wetter[2]['icon'] = $imgurl . yahoo_code2icon($api->forecast1_code);
+	$wetter[2]['tief'] = split(" ",$api->forecast1_temp_low)[0]; 
+	$wetter[2]['hoch'] = split(" ",$api->forecast1_temp_high)[0];
 
 	return $wetter;
 }
@@ -224,6 +226,5 @@ function yahoo_code2icon($code) {
 	$icon = $code . "d.png";
 	return $icon;
 }
-
 
 ?>
