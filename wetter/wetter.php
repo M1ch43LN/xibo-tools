@@ -1,13 +1,23 @@
 <?php 	
 	
 	$ort_id = "GMXX2275"; //ID finden: http://weather.tuxnet24.de/?action=citycode&lang=de
-	$refresh = 120;
+	$refresh = 900; //Nach wie vielen Sekunden soll die Seite neu dargestellt bzw. die Daten neu geladen werden?
 	$icon_url = "//l.yimg.com/us.yimg.com/i/us/nws/weather/gr/";
 
 	header('content-type: text/html; charset=utf-8');
 	header('refresh: ' . $refresh . ';URL="wetter.php"'); 
 
-	$wetter = wetterdaten($ort_id, $icon_url);
+	$cachefile = str_replace(".php",".xml", $_SERVER["SCRIPT_FILENAME"]);
+	$bolReload = false;
+	if (file_exists($cachefile)) {
+		if (filemtime($cachefile) < time() - $refresh) {
+			$bolReload = true; //Cache abgelaufen. Neu laden!
+		}
+	} else {
+		$bolReload = true; //Cache nicht da. Neu laden!
+	}
+
+	$wetter = wetterdaten($ort_id, $icon_url, $bolReload, $cachefile);
 ?>
 
 <!DOCTYPE html>
@@ -139,11 +149,16 @@
 
 <?php
 
-function wetterdaten($w,$imgurl) {
+function wetterdaten($w,$imgurl,$reload,$cachefile) {
 	$xmlurl = "http://weather.tuxnet24.de/?id=" . $w . "&unit=c&mode=xml";
 	
-	// Daten von API laden und in SimpleXML konvertieren
-	$xml = file_get_contents($xmlurl);
+	// Daten von API oder Cache laden und in SimpleXML konvertieren
+	if ($reload) {
+		$xml = file_get_contents($xmlurl);
+		file_put_contents($cachefile, $xml);
+	} else {
+		$xml = file_get_contents($cachefile);
+	}
 	$api = simplexml_load_string(utf8_encode($xml));
 	$wetter = array();
 		
